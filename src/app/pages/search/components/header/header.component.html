@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Image Galery</h1>
+  <form [formGroup]="searchForm" (ngSubmit)="hundleSubmit()" class="searchForm">
+    <input type="text" class="inputQuery" placeholder="Search..." formControlName="query">
+    <button class="submitBtn" type="submit" [disabled]="!searchForm.valid">
+      <img src="./assets/icons/search.svg" alt="">
+    </button>
+  </form>
+</div>

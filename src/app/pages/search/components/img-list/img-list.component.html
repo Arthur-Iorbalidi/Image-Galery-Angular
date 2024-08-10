@@ -1,0 +1,7 @@
+<div class="container">
+  @for (img of imgs; track img.id) {
+    <a target="_blank" class="link" [href]="img.urls.full">
+      <img class="img" [src]="img.urls.regular" [alt]="img.description">
+    </a>
+  }
+</div>
