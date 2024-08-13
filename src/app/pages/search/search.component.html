@@ -1,2 +1,3 @@
 <app-header></app-header>
-<app-img-list [imgs]="imgs"></app-img-list>
+<app-img-list [imgs]="response?.results || []" [isLoading]="isLoading"></app-img-list>
+<app-pagination [currentPage]="currentPage" [totalPages]="response?.total_pages || 1"></app-pagination>

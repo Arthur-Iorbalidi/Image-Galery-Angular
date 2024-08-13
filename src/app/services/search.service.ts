@@ -12,6 +12,24 @@ export class SearchService {
     page: 1,
   });
 
+  private isLoading = new BehaviorSubject<boolean>(false);
+
+  getObservableIsLoading() {
+    return this.isLoading.asObservable();
+  }
+
+  getIsLoading() {
+    return this.isLoading.getValue();
+  }
+
+  loading() {
+    this.isLoading.next(true);
+  }
+
+  loaded() {
+    this.isLoading.next(false);
+  }
+
   getObservableState() {
     return this.state.asObservable();
   }

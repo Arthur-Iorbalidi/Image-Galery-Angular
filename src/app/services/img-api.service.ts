@@ -42,6 +42,6 @@ export class ImgAPIService {
   private orientation = 'landscape';
 
   public get(props: IGetProps) {
-    return this.http.get<IData>(`${this.baseUrl}${props.option}?orientation=${this.orientation}&per_page=${this.imgsPerPage}&query=${props.query}&client_id=${this.key}`  )
+    return this.http.get<IData>(`${this.baseUrl}${props.option}?orientation=${this.orientation}&per_page=${this.imgsPerPage}&query=${props.query}&page=${props.page}&client_id=${this.key}`  )
   }
 }

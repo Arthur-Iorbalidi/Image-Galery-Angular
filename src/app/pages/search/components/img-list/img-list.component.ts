@@ -10,4 +10,6 @@ import { IImg } from '../../../../services/img-api.service';
 })
 export class ImgListComponent {
   @Input() imgs: IImg[] = [];
+
+  @Input() isLoading = false;
 }
