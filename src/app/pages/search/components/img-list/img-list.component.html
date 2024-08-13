@@ -1,7 +1,14 @@
 <div class="container">
-  @for (img of imgs; track img.id) {
-    <a target="_blank" class="link" [href]="img.urls.full">
-      <img class="img" [src]="img.urls.regular" [alt]="img.description">
-    </a>
+  @if(isLoading) {
+    <div class="loadingWrapper">
+      <img class="loadingIcon" src="./assets/icons/loading.svg" alt="">
+    </div>
+  }
+  @if (imgs) {
+    @for (img of imgs; track img.id) {
+      <a target="_blank" class="link" [href]="img.urls.full">
+        <img class="img" [src]="img.urls.regular" [alt]="img.description">
+      </a>
+    }
   }
 </div>

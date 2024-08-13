@@ -1,0 +1,9 @@
+@if (!searchService.getIsLoading()) {
+  @if (currentPage !== 1) {
+    <img class="arrow-left arrow" src="./assets/icons/arrow-left.svg" (click)="left()" alt="arrow-left">
+  }
+  <div class="current-page">{{ currentPage }}</div>
+  @if (currentPage < totalPages) {
+    <img class="arrow-right arrow" src="./assets/icons/arrow-right.svg" (click)="right()" alt="arrow-right">
+  }
+}

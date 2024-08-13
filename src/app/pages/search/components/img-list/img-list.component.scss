@@ -1,3 +1,12 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :host {
   display: block;
   padding: 20px;
@@ -12,7 +21,16 @@
     align-items: center;
   }
   .img {
-      width: 100%;
+    width: 100%;
+  }
+  .loadingWrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    .loadingIcon {
+      animation: 3s spin linear infinite;
+    }
   }
 }
 
