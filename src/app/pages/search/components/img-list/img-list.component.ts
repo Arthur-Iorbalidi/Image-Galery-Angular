@@ -9,5 +9,5 @@ import { IImg } from '../../../../services/img-api.service';
   styleUrl: './img-list.component.scss'
 })
 export class ImgListComponent {
-  @Input() imgs: IImg[] | null = null;
+  @Input() imgs: IImg[] = [];
 }

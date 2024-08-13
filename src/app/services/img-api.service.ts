@@ -8,6 +8,7 @@ export enum Options {
 export interface IGetProps {
   option: Options,
   query: string,
+  page: number,
 }
 
 export interface IData {
@@ -42,5 +43,5 @@ export class ImgAPIService {
 
   public get(props: IGetProps) {
     return this.http.get<IData>(`${this.baseUrl}${props.option}?orientation=${this.orientation}&per_page=${this.imgsPerPage}&query=${props.query}&client_id=${this.key}`  )
-}
+  }
 }

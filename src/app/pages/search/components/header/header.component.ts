@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IGetProps, Options } from '../../../../services/img-api.service';
+import { SearchService } from '../../../../services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +10,14 @@ import { IGetProps, Options } from '../../../../services/img-api.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  @Input() search!: ((props: IGetProps) => void);
+  searchService = inject(SearchService);
 
   searchForm = new FormGroup({
     query: new FormControl('', Validators.required),
   });
 
   hundleSubmit() {
-    this.search({option: Options.search, query: this.searchForm.value.query!})
+    this.searchService.updateState({...this.searchService.getValue(), query: this.searchForm.value.query!})
     this.searchForm.reset();
   }
 }

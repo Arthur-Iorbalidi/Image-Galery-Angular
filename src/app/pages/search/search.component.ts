@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { ImgListComponent } from './components/img-list/img-list.component';
-import { IData, IGetProps, IImg, ImgAPIService, Options } from '../../services/img-api.service';
+import { IGetProps, IImg, ImgAPIService, Options } from '../../services/img-api.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -12,10 +13,15 @@ import { IData, IGetProps, IImg, ImgAPIService, Options } from '../../services/i
 })
 export class SearchComponent {
   private imgApiService = inject(ImgAPIService);
-  imgs: IImg[] | null = null;
 
-  constructor() {
-    this.getImgs({option: Options.search, query: 'Nature'});
+  private search = inject(SearchService);
+
+  imgs: IImg[] = [];
+
+  ngOnInit() {
+    this.search.getObservableState().subscribe(options => {
+      this.getImgs(options);
+    })
   }
 
   getImgs(props: IGetProps) {
